@@ -3,7 +3,7 @@ const { Schema, model } = mongoose;
 
 const trackSchema  = new Schema({
     name: {type: String, required: true},
-    artist: [{type: Schema.Types.ObjectId, ref: 'artist-model', required: true}], 
+    artist: [{type: Schema.Types.ObjectId, ref: 'Artist', required: true}], 
     url: {type: String, required: true},
     trackPicture: {type: String}
 });

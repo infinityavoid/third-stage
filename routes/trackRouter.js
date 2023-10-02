@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import tracksController from '../controllers/tracksController.js'
 import multer from 'multer'
+import mime from 'mime-types'
 
 const trackRouter = new Router()
 const trackStorage = multer.diskStorage({
@@ -15,7 +16,8 @@ const trackStorage = multer.diskStorage({
         }
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
+      const extension = mime.extension(file.mimetype);
+      cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
     }
   })
   const trackUpload = multer({storage:trackStorage})

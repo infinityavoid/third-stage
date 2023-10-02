@@ -16,12 +16,18 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    credentials:true,
+    origin:'http://localhost:5173'
+}
+
+
+));
 app.use(cookieParser())
 
 
 app.use('/auth', authRouter)
-app.use('/tracks', authWare, trackRouter)
+app.use('/tracks', /*authWare,*/ trackRouter)
 app.use('/artist', authWare, artistRouter)
 app.use('/album', authWare, albumRouter)
 app.use('/follow', authWare, followRouter)

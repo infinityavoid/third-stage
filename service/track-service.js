@@ -3,7 +3,7 @@ import Artist from '../models/artist-model.js'
 
 class TrackService {
   async getTracks() {
-    const tracks = await Track.find()
+    const tracks = await Track.find().populate('artist')
     return tracks
   }
   async addTrack(name,artists, url, pic,userId) 
